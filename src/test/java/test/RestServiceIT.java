@@ -72,6 +72,9 @@ public class RestServiceIT {
 
         Logger logger = LoggerFactory.getLogger("test");
 
+        /*
+         Log the contents of table b.modelb to the console to make sure that a) there is a table and b) it has data.
+        */
         Statement statement = connection.createStatement();
         statement.execute("SELECT * FROM b.modelb;");
         connection.commit();
