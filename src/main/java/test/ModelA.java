@@ -1,8 +1,16 @@
 package test;
 
-public interface ModelA {
+import org.javalite.activejdbc.Model;
+import org.javalite.activejdbc.annotations.Table;
 
-    void setField(String field);
+@Table("modela")
+public class ModelA extends Model {
 
-    String getField();
+    public void setField(String field) {
+        this.setString("field", field);
+    }
+
+    public String getField() {
+        return this.getString("field");
+    }
 }

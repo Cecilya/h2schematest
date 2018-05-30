@@ -1,8 +1,17 @@
 package test;
 
-public interface ModelB {
+import org.javalite.activejdbc.Model;
+import org.javalite.activejdbc.annotations.Table;
 
-    String getAttribute();
+@Table("b.modelb")
+public class ModelB extends Model {
 
-    void setAttribute(String attribute);
+    public String getAttribute() {
+        return this.getString("attribute");
+    }
+
+    public void setAttribute(String attribute) {
+        this.setString("attribute", attribute);
+    }
+
 }
