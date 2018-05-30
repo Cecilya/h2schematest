@@ -3,7 +3,6 @@ package test;
 import org.javalite.activejdbc.Base;
 
 import javax.enterprise.context.RequestScoped;
-import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -18,18 +17,13 @@ import java.util.stream.Collectors;
 @Path("/schemas")
 public class RestService {
 
-    @Inject
-    private SchemaARepository schemaARepository;
-
-    @Inject
-    private SchemaBRepository schemaBRepository;
 
     @GET
     @Path("/a")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getFromSchemaA() {
         return proceedWithNewTransaction(a -> {
-            List<ModelA> result = schemaARepository.loadFromSchemaA();
+            List<ModelAEntity> result = ModelAEntity.findAll();
             List<ModelARest> restObjects = new ArrayList<>();
 
             if (result != null && !result.isEmpty()) {
@@ -45,7 +39,7 @@ public class RestService {
     @Produces(MediaType.APPLICATION_JSON)
     public Response getFromSchemaB() {
         return proceedWithNewTransaction(a -> {
-            List<ModelB> result = schemaBRepository.loadFromSchemaB();
+            List<ModelBEntity> result = ModelBEntity.findAll();
             List<ModelBRest> restObjects = new ArrayList<>();
 
             if (result != null && !result.isEmpty()) {

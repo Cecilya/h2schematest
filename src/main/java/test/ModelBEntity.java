@@ -4,7 +4,7 @@ import org.javalite.activejdbc.Model;
 import org.javalite.activejdbc.annotations.Table;
 
 @Table("b.modelb")
-public class ModelBEntity extends Model {
+public class ModelBEntity extends Model implements ModelB {
 
     public String getAttribute() {
         return this.getString("attribute");
