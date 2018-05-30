@@ -12,7 +12,6 @@ import liquibase.resource.ClassLoaderResourceAccessor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.enterprise.context.ApplicationScoped;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
@@ -22,7 +21,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Properties;
 
-@ApplicationScoped
 public class LiquibaseInitialisation {
 
     public static final String LIQUIBASE_CONFIG = "liquibase.properties";
