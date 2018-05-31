@@ -1,5 +1,6 @@
 package test;
 
+import org.javalite.activejdbc.Base;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -7,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.sql.Connection;
+import java.sql.DatabaseMetaData;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
@@ -62,6 +64,10 @@ public class DatabaseAccessorIT {
             }
             logger.warn(builder.toString());
         }
+
+        DatabaseMetaData databaseMetaData = connection.getMetaData();
+        ResultSet rs = databaseMetaData.getColumns("TESTDB", "B","MODELB", null);
+        logger.warn("Has columns: " + rs.next());
     }
 
     @After
