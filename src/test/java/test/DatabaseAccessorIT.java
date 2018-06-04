@@ -66,8 +66,11 @@ public class DatabaseAccessorIT {
         }
 
         DatabaseMetaData databaseMetaData = connection.getMetaData();
-        ResultSet rs = databaseMetaData.getColumns("TESTDB", "B","MODELB", null);
+        ResultSet rs = databaseMetaData.getColumns("TESTDB", "b","MODELB", null);
         logger.warn("Has columns: " + rs.next());
+
+        // schema is returned in upper case!
+        logger.warn(connection.getSchema());
     }
 
     @After
